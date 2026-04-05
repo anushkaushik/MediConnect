@@ -5,11 +5,11 @@ from typing import Optional
 import pandas as pd
 import json
 import os
-from dotenv import load_dotenv
+
 import google.generativeai as genai
 
-load_dotenv()
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+
+genai.configure(api_key=' your gemini key')
 
 app = FastAPI(title="MediMatch AI Agent", version="1.0.0")
 
@@ -115,7 +115,7 @@ Respond ONLY with this JSON (no extra text):
   "precautions": "<one line precaution advice>"
 }}"""
 
-    model = genai.GenerativeModel("gemini-2.0-flash-lite")
+    model = genai.GenerativeModel("gemini-flash-latest")
     message = model.generate_content(prompt)
     raw = message.text.strip()
     # Strip markdown fences if present
@@ -125,6 +125,7 @@ Respond ONLY with this JSON (no extra text):
             raw = raw[4:]
     result = json.loads(raw.strip())
     return result
+    print(result)
 
 # ── POST /chat ────────────────────────────────────────────────────────────────
 @app.post("/chat")
@@ -159,7 +160,7 @@ Guidelines:
             "parts": [m["content"]]
         })
     model = genai.GenerativeModel(
-        model_name="gemini-2.0-flash-lite",
+        model_name="gemini-flash-latest",
         system_instruction=system_prompt
     )
     chat = model.start_chat(history=gemini_history)
