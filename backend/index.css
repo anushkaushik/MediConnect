@@ -1,0 +1,273 @@
+/* src/index.css */
+:root {
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --accent: #10b981;
+  --danger: #ef4444;
+  --bg: #f0f9ff;
+  --surface: #ffffff;
+  --border: #e0f2fe;
+  --text: #0f172a;
+  --text-light: #64748b;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(14, 165, 233, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── City Dialog ─────────────────────────────────────────────────────────── */
+.city-dialog-overlay {
+  position: fixed; inset: 0;
+  background: rgba(14, 165, 233, 0.15);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+
+.city-dialog {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: min(440px, 90vw);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+  border: 1px solid var(--border);
+}
+
+.dialog-icon { font-size: 3rem; margin-bottom: 1rem; }
+.city-dialog h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.city-dialog p { color: var(--text-light); margin-bottom: 1.5rem; }
+
+.city-select {
+  width: 100%; padding: .75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem; background: var(--bg);
+  margin-bottom: 1rem; cursor: pointer;
+  transition: border-color .2s;
+}
+.city-select:focus { outline: none; border-color: var(--primary); }
+
+.confirm-btn {
+  width: 100%; padding: .9rem;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: background .2s, transform .1s;
+}
+.confirm-btn:hover:not(:disabled) { background: var(--primary-dark); }
+.confirm-btn:active { transform: scale(.98); }
+.confirm-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── App Layout ──────────────────────────────────────────────────────────── */
+.app { max-width: 800px; margin: 0 auto; padding: 1rem; }
+
+.app-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0; margin-bottom: 1rem;
+}
+
+.logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+
+.city-badge {
+  background: white; border: 2px solid var(--border);
+  border-radius: 50px; padding: .4rem 1rem;
+  font-size: .9rem; cursor: pointer; font-weight: 600;
+  color: var(--primary); transition: border-color .2s;
+}
+.city-badge:hover { border-color: var(--primary); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+.tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; }
+
+.tab {
+  flex: 1; padding: .7rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: white; font-size: .95rem;
+  font-weight: 500; cursor: pointer; transition: all .2s;
+}
+.tab.active {
+  background: var(--primary); color: white;
+  border-color: var(--primary);
+}
+.tab:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+/* ── Sections ────────────────────────────────────────────────────────────── */
+.section {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.section h2 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-light); }
+
+/* ── Symptom Input ───────────────────────────────────────────────────────── */
+.symptom-input {
+  width: 100%; padding: .75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem; font-family: inherit;
+  resize: vertical; margin-bottom: 1rem;
+  transition: border-color .2s;
+}
+.symptom-input:focus { outline: none; border-color: var(--primary); }
+
+.primary-btn {
+  width: 100%; padding: .85rem;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: background .2s;
+}
+.primary-btn:hover:not(:disabled) { background: var(--primary-dark); }
+.primary-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── Result Card ─────────────────────────────────────────────────────────── */
+.result-card {
+  margin-top: 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  background: var(--bg);
+}
+
+.result-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1rem;
+}
+.doctor-icon { font-size: 2.5rem; }
+.result-header h3 { font-size: 1.3rem; }
+.specialization { color: var(--primary); font-weight: 600; }
+
+.result-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: .75rem; margin-bottom: 1rem;
+}
+.result-grid > div {
+  background: white; padding: .75rem;
+  border-radius: 10px; border: 1px solid var(--border);
+  font-size: .9rem; line-height: 1.6;
+}
+.reason-box { grid-column: 1 / -1; }
+
+.medicines, .precautions {
+  background: white; padding: .75rem 1rem;
+  border-radius: 10px; border: 1px solid var(--border);
+  margin-bottom: .75rem; font-size: .9rem;
+}
+.precautions { border-left: 4px solid var(--danger); }
+
+/* ── Booking ─────────────────────────────────────────────────────────────── */
+.booking-section {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem; margin-top: .75rem;
+}
+.booking-section h4 { margin-bottom: .75rem; }
+
+.text-input, .slot-select {
+  width: 100%; padding: .6rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .95rem; background: white;
+  margin-bottom: .6rem; transition: border-color .2s;
+}
+.text-input:focus, .slot-select:focus {
+  outline: none; border-color: var(--accent);
+}
+
+.book-btn {
+  width: 100%; padding: .7rem;
+  background: var(--accent); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 1rem; font-weight: 600;
+  cursor: pointer; transition: background .2s;
+}
+.book-btn:hover:not(:disabled) { background: #059669; }
+.book-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.booking-result {
+  margin-top: .75rem; padding: .75rem;
+  background: white; border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: .9rem;
+}
+
+/* ── Chat ────────────────────────────────────────────────────────────────── */
+.chat-section { display: flex; flex-direction: column; gap: 1rem; }
+
+.chat-window {
+  min-height: 380px; max-height: 500px;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: .75rem;
+  padding: .5rem;
+}
+
+.chat-placeholder {
+  color: var(--text-light); text-align: center;
+  margin: auto; padding: 2rem;
+  font-size: 1rem; line-height: 1.6;
+}
+
+.chat-bubble {
+  max-width: 75%; padding: .75rem 1rem;
+  border-radius: 14px; font-size: .95rem; line-height: 1.5;
+}
+.chat-bubble.user {
+  align-self: flex-end;
+  background: var(--primary); color: white;
+  border-bottom-right-radius: 4px;
+}
+.chat-bubble.assistant {
+  align-self: flex-start;
+  background: white; border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.bubble-label {
+  display: block; font-size: .75rem;
+  font-weight: 700; opacity: .7; margin-bottom: .25rem;
+}
+
+.typing-dots {
+  letter-spacing: 4px; color: var(--primary);
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+.chat-input-row { display: flex; gap: .5rem; }
+
+.chat-input {
+  flex: 1; padding: .75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem; transition: border-color .2s;
+}
+.chat-input:focus { outline: none; border-color: var(--primary); }
+
+.send-btn {
+  padding: .75rem 1.25rem;
+  background: var(--primary); color: white;
+  border: none; border-radius: var(--radius);
+  font-size: 1.1rem; cursor: pointer;
+  transition: background .2s;
+}
+.send-btn:hover:not(:disabled) { background: var(--primary-dark); }
+.send-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ── Utilities ───────────────────────────────────────────────────────────── */
+.error-text { color: var(--danger); margin-top: .5rem; font-size: .9rem; }
+.loading-text { color: var(--text-light); }
+
+@media (max-width: 540px) {
+  .result-grid { grid-template-columns: 1fr; }
+  .reason-box { grid-column: 1; }
+}

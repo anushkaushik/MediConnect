@@ -1,0 +1,40 @@
+symptom,organ,specialty
+palpitations,heart,cardiologist
+chest pain,heart,cardiologist
+shortness of breath,heart,cardiologist
+stomach pain,digestive system,gastroenterologist
+bloating,digestive system,gastroenterologist
+acid reflux,digestive system,gastroenterologist
+diarrhea,digestive system,gastroenterologist
+headache,brain,neurologist
+dizziness,brain,neurologist
+seizures,brain,neurologist
+rash,skin,dermatologist
+itching,skin,dermatologist
+acne,skin,dermatologist
+joint pain,bones,orthopedic
+back pain,spine,orthopedic
+fracture,bones,orthopedic
+ear pain,ear,ENT specialist
+sore throat,throat,ENT specialist
+sinus congestion,sinuses,ENT specialist
+chronic cough,lungs,pulmonologist
+wheezing,lungs,pulmonologist
+breathing difficulty,lungs,pulmonologist
+anxiety,mental health,psychiatrist
+depression,mental health,psychiatrist
+panic attacks,mental health,psychiatrist
+blurred vision,eyes,ophthalmologist
+eye pain,eyes,ophthalmologist
+red eyes,eyes,ophthalmologist
+painful urination,urinary system,urologist
+frequent urination,urinary system,urologist
+blood in urine,urinary system,urologist
+irregular periods,reproductive system,gynecologist
+pelvic pain,reproductive system,gynecologist
+heavy bleeding,reproductive system,gynecologist
+fatigue,hormonal system,endocrinologist
+weight gain,hormonal system,endocrinologist
+excessive thirst,hormonal system,endocrinologist
+fever,general,general physician
+weakness,general,general physician
